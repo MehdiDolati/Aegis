@@ -1,22 +1,37 @@
-# Default Aegis Policy
-# Base policy for all projects using ASES
+# Python Project Policy
+# A policy for Python projects
 
-name: default-policy
+name: python-policy
 version: 1.0.0
 description: |
-  Default policy for projects using the Agent Software Engineering Standard.
-  Customize this policy for your specific technology stack and requirements.
+  Policy for Python projects using pytest, ruff, and standard Python practices.
 
 author: Aegis Project
 created: 2026-07-22
 updated: 2026-07-22
 
 technology:
-  language: []
-  framework: []
-  test_framework: []
-  linter: []
-  formatter: []
+  language:
+    - Python
+
+  framework:
+    - FastAPI
+    - SQLAlchemy
+    - Pydantic
+
+  test_framework:
+    - pytest
+    - pytest-cov
+    - pytest-asyncio
+
+  linter:
+    - ruff
+    - mypy
+    - bandit
+
+  formatter:
+    - ruff format
+    - black
 
 rules:
   include:
@@ -70,6 +85,7 @@ definition_of_done:
   code_implemented: true
   code_reviewed: true
   unit_tests_pass: true
+  integration_tests_pass: true
   documentation_updated: true
   traceability_complete: true
 

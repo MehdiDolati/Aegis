@@ -1,22 +1,36 @@
-# Default Aegis Policy
-# Base policy for all projects using ASES
+# React Project Policy
+# A policy for React projects
 
-name: default-policy
+name: react-policy
 version: 1.0.0
 description: |
-  Default policy for projects using the Agent Software Engineering Standard.
-  Customize this policy for your specific technology stack and requirements.
+  Policy for React projects using TypeScript, Jest, and standard React practices.
 
 author: Aegis Project
 created: 2026-07-22
 updated: 2026-07-22
 
 technology:
-  language: []
-  framework: []
-  test_framework: []
-  linter: []
-  formatter: []
+  language:
+    - TypeScript
+    - JavaScript
+
+  framework:
+    - React
+    - Next.js
+    - Tailwind CSS
+
+  test_framework:
+    - Jest
+    - React Testing Library
+    - Playwright
+
+  linter:
+    - ESLint
+    - Prettier
+
+  formatter:
+    - Prettier
 
 rules:
   include:
@@ -50,8 +64,9 @@ gates:
 
 testing:
   unit_coverage: 80
-  integration_required: true
-  e2e_required: false
+  integration_required: false
+  e2e_required: true
+  e2e_framework: Playwright
 
 documentation:
   user_manual: true
@@ -70,6 +85,7 @@ definition_of_done:
   code_implemented: true
   code_reviewed: true
   unit_tests_pass: true
+  e2e_tests_pass: true
   documentation_updated: true
   traceability_complete: true
 

@@ -1,0 +1,60 @@
+# ASES Traceability Rules
+# Rules for cross-phase traceability requirements
+
+rules:
+  - id: TRACE-001
+    title: Traceability Matrix exists
+    description: A Traceability Matrix must exist for every feature.
+    severity: error
+    phase: final-review
+    gate: TRACE-001
+    validator:
+      type: automated
+      checklist:
+        - Traceability Matrix file exists
+        - Matrix is not empty
+        - Matrix covers all requirements
+    evidence:
+      - documentation
+
+  - id: TRACE-002
+    title: No orphan requirements
+    description: Every requirement must have at least one implementation.
+    severity: error
+    phase: final-review
+    gate: TRACE-002
+    validator:
+      type: manual
+      checklist:
+        - All requirements have code references
+        - No requirements without implementation
+    evidence:
+      - manual-check
+
+  - id: TRACE-003
+    title: No orphan code
+    description: Every piece of code should trace to a requirement.
+    severity: warning
+    phase: final-review
+    gate: TRACE-003
+    validator:
+      type: manual
+      checklist:
+        - New code has requirement reference
+        - Orphan code is justified or removed
+    evidence:
+      - manual-check
+
+  - id: TRACE-004
+    title: All links bidirectional
+    description: Traceability links must work in both directions.
+    severity: error
+    phase: final-review
+    gate: TRACE-004
+    validator:
+      type: manual
+      checklist:
+        - Forward trace (requirement to code) works
+        - Backward trace (code to requirement) works
+    evidence:
+      - manual-check

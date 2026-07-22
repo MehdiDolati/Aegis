@@ -1,0 +1,149 @@
+# Aegis Traceability Schema
+# Defines the structure for traceability matrices
+
+$schema: "http://json-schema.org/draft-07/schema#"
+title: Aegis Traceability Matrix
+description: Machine-readable definition of a traceability matrix
+
+type: object
+required:
+  - feature_id
+  - feature_title
+  - created
+  - links
+
+properties:
+  feature_id:
+    type: string
+    description: Feature identifier (e.g., FEAT-0001)
+    pattern: "^FEAT-[0-9]{4}$"
+
+  feature_title:
+    type: string
+    description: Feature title
+    minLength: 5
+    maxLength: 200
+
+  created:
+    type: string
+    description: Creation date (ISO 8601)
+    format: date
+
+  updated:
+    type: string
+    description: Last update date (ISO 8601)
+    format: date
+
+  links:
+    type: array
+    description: Traceability links
+    items:
+      type: object
+      properties:
+        requirement:
+          type: string
+          description: Requirement ID (e.g., AC-1)
+
+        specification:
+          type: string
+          description: Specification document reference
+
+        tasks:
+          type: array
+          description: Related task IDs
+          items:
+            type: string
+
+        code:
+          type: array
+          description: Related source code files
+          items:
+            type: string
+
+        tests:
+          type: object
+          description: Related test files
+          properties:
+            unit:
+              type: array
+              items:
+                type: string
+            integration:
+              type: array
+              items:
+                type: string
+            e2e:
+              type: array
+              items:
+                type: string
+
+        documentation:
+          type: array
+          description: Related documentation
+          items:
+            type: string
+
+        status:
+          type: string
+          description: Traceability status
+          enum:
+            - complete
+            - partial
+            - missing
+            - orphaned
+
+    required:
+      - requirement
+      - status
+
+  orphans:
+    type: object
+    description: Detected orphaned items
+    properties:
+      requirements:
+        type: array
+        description: Requirements with no implementation
+        items:
+          type: string
+
+      code:
+        type: array
+        description: Code with no requirement
+        items:
+          type: string
+
+      tests:
+        type: array
+        description: Tests with no requirement
+        items:
+          type: string
+
+  summary:
+    type: object
+    description: Traceability summary
+    properties:
+      total_requirements:
+        type: integer
+        description: Total number of requirements
+
+      covered_requirements:
+        type: integer
+        description: Requirements with implementation
+
+      coverage_percentage:
+        type: number
+        description: Coverage percentage
+        minimum: 0
+        maximum: 100
+
+      orphan_count:
+        type: integer
+        description: Number of orphaned items
+
+required:
+  - feature_id
+  - feature_title
+  - created
+  - links
+
+additionalProperties: false

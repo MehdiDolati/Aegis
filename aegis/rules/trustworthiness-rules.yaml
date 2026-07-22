@@ -1,0 +1,82 @@
+# ASES Trustworthiness Rules
+# Rules based on research: Trustworthy AI Software Engineers (arXiv:2602.06310)
+
+rules:
+  - id: TRUST-001
+    title: Decisions are explained
+    description: Every significant decision must be justified with reasoning.
+    severity: warning
+    phase: solution-design
+    gate: TRUST-001
+    validator:
+      type: manual
+      checklist:
+        - Design decisions have rationale
+        - Trade-offs are documented
+        - Alternatives are considered
+    evidence:
+      - documentation
+      - code-review
+    examples:
+      - description: "Decision explanation"
+        compliant: "Chose JWT for statelessness; documented trade-offs"
+        non_compliant: "Used JWT without explanation"
+
+  - id: TRUST-002
+    title: Assumptions are stated
+    description: All assumptions must be explicitly stated.
+    severity: info
+    phase: specification
+    gate: TRUST-002
+    validator:
+      type: manual
+      checklist:
+        - Assumptions are listed
+        - Assumptions are validated
+    evidence:
+      - documentation
+
+  - id: TRUST-003
+    title: Uncertainty is acknowledged
+    description: AI agents must acknowledge uncertainty when it exists.
+    severity: info
+    phase: controlled-implementation
+    gate: TRUST-003
+    validator:
+      type: manual
+      checklist:
+        - Uncertainty is stated
+        - Confidence levels are provided
+        - Verification is requested
+    evidence:
+      - manual-check
+
+  - id: TRUST-004
+    title: Evidence is provided
+    description: Claims must be supported by evidence.
+    severity: error
+    phase: verification
+    gate: TRUST-004
+    validator:
+      type: manual
+      checklist:
+        - Test results provided
+        - Coverage reports provided
+        - Security scan results provided
+    evidence:
+      - test-output
+      - tool-output
+
+  - id: TRUST-005
+    title: Limitations are acknowledged
+    description: AI agents must acknowledge their limitations.
+    severity: info
+    phase: controlled-implementation
+    gate: TRUST-005
+    validator:
+      type: manual
+      checklist:
+        - Limitations are stated
+        - Help is requested when needed
+    evidence:
+      - manual-check

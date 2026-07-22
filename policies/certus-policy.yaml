@@ -1,0 +1,132 @@
+# Certus Project Policy
+# A reference policy for the Certus project
+
+name: certus-policy
+version: 1.0.0
+description: |
+  Project policy for Certus, a .NET web application with Playwright E2E tests.
+  This policy configures ASES for the Certus technology stack.
+
+author: Aegis Project
+created: 2026-07-22
+updated: 2026-07-22
+
+technology:
+  language:
+    - C#
+    - TypeScript
+    - SQL
+
+  framework:
+    - ASP.NET Core
+    - Entity Framework Core
+    - React
+
+  test_framework:
+    - xUnit
+    - Playwright
+    - Moq
+
+  linter:
+    - ESLint
+    - StyleCop
+    - SonarQube
+
+  formatter:
+    - Prettier
+    - dotnet format
+
+rules:
+  include:
+    - ../aegis/rules/specification-rules.yaml
+    - ../aegis/rules/design-rules.yaml
+    - ../aegis/rules/implementation-rules.yaml
+    - ../aegis/rules/verification-rules.yaml
+    - ../aegis/rules/documentation-rules.yaml
+    - ../aegis/rules/maintainability-rules.yaml
+    - ../aegis/rules/traceability-rules.yaml
+    - ../aegis/rules/security-rules.yaml
+
+  exclude: []
+
+  overrides:
+    - rule_id: VER-005
+      severity: error
+      enabled: true
+
+    - rule_id: MAINT-003
+      severity: error
+      enabled: true
+
+gates:
+  phases:
+    - specification
+    - requirement-review
+    - impact-analysis
+    - solution-design
+    - controlled-implementation
+    - verification
+    - documentation
+    - maintainability-audit
+    - technical-debt-review
+    - final-review
+
+  severity_override:
+    VER-005: error
+    MAINT-003: error
+    DOC-005: error
+
+testing:
+  unit_coverage: 80
+  integration_required: true
+  e2e_required: true
+  e2e_framework: Playwright
+
+documentation:
+  user_manual: true
+  api_docs: true
+  release_notes: true
+  adr_required: true
+
+security:
+  secret_scanning: true
+  dependency_review: true
+  input_validation: true
+
+definition_of_done:
+  specification_exists: true
+  user_story_approved: true
+  acceptance_criteria_defined: true
+  definition_of_done_specified: true
+  dependencies_identified: true
+  risks_identified: true
+  impact_assessment_complete: true
+  implementation_plan_approved: true
+  task_breakdown_complete: true
+  code_implemented: true
+  code_reviewed: true
+  coding_standards_satisfied: true
+  unit_tests_pass: true
+  integration_tests_pass: true
+  e2e_tests_pass: true
+  acceptance_criteria_verified: true
+  user_manual_updated: true
+  api_documentation_updated: true
+  release_notes_updated: true
+  no_critical_bugs: true
+  no_high_severity_bugs: true
+  maintainability_report_generated: true
+  technical_debt_reviewed: true
+  traceability_complete: true
+  policy_checks_passed: true
+  quality_gates_passed: true
+  reviewer_sign_off_obtained: true
+
+definition_of_ready:
+  business_problem_understood: true
+  user_story_approved: true
+  scope_reviewed: true
+  acceptance_criteria_approved: true
+  ux_reviewed: true
+  risks_identified: true
+  dependencies_resolved: true

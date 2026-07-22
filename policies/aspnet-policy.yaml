@@ -1,22 +1,36 @@
-# Default Aegis Policy
-# Base policy for all projects using ASES
+# ASP.NET Project Policy
+# A policy for ASP.NET Core projects
 
-name: default-policy
+name: aspnet-policy
 version: 1.0.0
 description: |
-  Default policy for projects using the Agent Software Engineering Standard.
-  Customize this policy for your specific technology stack and requirements.
+  Policy for ASP.NET Core projects using Entity Framework Core, xUnit, and standard .NET practices.
 
 author: Aegis Project
 created: 2026-07-22
 updated: 2026-07-22
 
 technology:
-  language: []
-  framework: []
-  test_framework: []
-  linter: []
-  formatter: []
+  language:
+    - C#
+    - SQL
+
+  framework:
+    - ASP.NET Core
+    - Entity Framework Core
+    - MediatR
+
+  test_framework:
+    - xUnit
+    - Moq
+    - FluentAssertions
+
+  linter:
+    - StyleCop
+    - SonarQube
+
+  formatter:
+    - dotnet format
 
 rules:
   include:
@@ -70,6 +84,7 @@ definition_of_done:
   code_implemented: true
   code_reviewed: true
   unit_tests_pass: true
+  integration_tests_pass: true
   documentation_updated: true
   traceability_complete: true
 

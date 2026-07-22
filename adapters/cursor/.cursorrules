@@ -1,0 +1,74 @@
+# Aegis Engineering Rules
+
+> Follow these rules when working on this project.
+
+---
+
+# Project Context
+
+This project follows the Agent Software Engineering Standard (ASES).
+
+---
+
+# Engineering Lifecycle
+
+Every feature must follow these phases:
+
+1. Specification
+2. Requirement Review
+3. Impact Analysis
+4. Solution Design
+5. Controlled Implementation
+6. Verification
+7. Documentation
+8. Maintainability Audit
+9. Technical Debt Review
+10. Final Review
+
+---
+
+# Required Artifacts
+
+For every feature:
+
+- Feature Specification
+- Impact Assessment
+- Implementation Plan
+- Task Breakdown
+- Source Code
+- Unit Tests
+- Integration Tests
+- Documentation Updates
+- Implementation Report
+- Traceability Matrix
+
+---
+
+# Rules
+
+1. Stay within approved scope
+2. Verify everything before completion
+3. Document all changes
+4. Link requirements to code
+5. No unauthorized refactoring
+
+---
+
+# Testing
+
+- Write unit tests for all new code
+- Ensure all tests pass before completion
+
+---
+
+# Documentation
+
+- Update documentation for all changes
+- Keep documentation current
+
+---
+
+# References
+
+- aegis/ASES.md
+- aegis/quality-gates.md

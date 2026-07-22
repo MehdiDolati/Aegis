@@ -1,0 +1,85 @@
+# ASES Documentation Rules
+# Rules for Phase 7: Documentation
+
+rules:
+  - id: DOC-001
+    title: User Manual updated (if applicable)
+    description: User Manual must be updated for user-facing features.
+    severity: error
+    phase: documentation
+    gate: DOC-001
+    validator:
+      type: manual
+      checklist:
+        - User Manual exists (if user-facing)
+        - New feature is documented
+        - Steps are clear and accurate
+    evidence:
+      - documentation
+    exceptions:
+      - condition: "Feature is not user-facing"
+        approval_required: false
+
+  - id: DOC-002
+    title: API Documentation updated (if applicable)
+    description: API Documentation must be updated for API changes.
+    severity: error
+    phase: documentation
+    gate: DOC-002
+    validator:
+      type: manual
+      checklist:
+        - API Documentation exists (if API changes)
+        - New endpoints documented
+        - Request/response formats documented
+        - Error codes documented
+    evidence:
+      - documentation
+    exceptions:
+      - condition: "No API changes"
+        approval_required: false
+
+  - id: DOC-003
+    title: Release Notes created
+    description: Release Notes must be created for every release.
+    severity: error
+    phase: documentation
+    gate: DOC-003
+    validator:
+      type: manual
+      checklist:
+        - Release Notes file exists
+        - New features listed
+        - Bug fixes listed
+        - Breaking changes listed
+    evidence:
+      - documentation
+
+  - id: DOC-004
+    title: Documentation matches implementation
+    description: Documentation must accurately reflect the implementation.
+    severity: error
+    phase: documentation
+    gate: DOC-004
+    validator:
+      type: manual
+      checklist:
+        - Documentation is accurate
+        - Examples work as documented
+        - No outdated information
+    evidence:
+      - manual-check
+
+  - id: DOC-005
+    title: No outdated documentation
+    description: Documentation must be current with latest changes.
+    severity: warning
+    phase: documentation
+    gate: DOC-005
+    validator:
+      type: automated
+      checklist:
+        - Documentation timestamps are recent
+        - No stale references
+    evidence:
+      - documentation

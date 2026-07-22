@@ -1,0 +1,110 @@
+# ASES Specification Rules
+# Rules for Phase 1: Specification
+
+rules:
+  - id: SPEC-001
+    title: Feature Specification must exist
+    description: Every feature must have a Feature Specification document before implementation begins.
+    severity: error
+    phase: specification
+    gate: SPEC-001
+    validator:
+      type: automated
+      checklist:
+        - Feature Specification file exists
+        - Document is not empty
+        - Document has required sections
+    evidence:
+      - documentation
+    exceptions:
+      - condition: "Prototype or spike"
+        approval_required: true
+        approver: "Tech Lead"
+
+  - id: SPEC-002
+    title: User Story is complete
+    description: The Feature Specification must include a complete User Story with As a/I want/So that format.
+    severity: error
+    phase: specification
+    gate: SPEC-002
+    validator:
+      type: automated
+      checklist:
+        - User Story section exists
+        - "As a" clause is present"
+        - "I want" clause is present
+        - "So that" clause is present
+    evidence:
+      - documentation
+
+  - id: SPEC-003
+    title: Acceptance Criteria are defined
+    description: The Feature Specification must include specific, measurable, and testable Acceptance Criteria.
+    severity: error
+    phase: specification
+    gate: SPEC-003
+    validator:
+      type: manual
+      checklist:
+        - Acceptance Criteria section exists
+        - At least one Acceptance Criterion is defined
+        - Each AC is specific and measurable
+        - Each AC is testable
+    evidence:
+      - documentation
+
+  - id: SPEC-004
+    title: Definition of Done is specified
+    description: The Feature Specification must include a Definition of Done.
+    severity: error
+    phase: specification
+    gate: SPEC-004
+    validator:
+      type: automated
+      checklist:
+        - Definition of Done section exists
+        - At least one item is checked
+    evidence:
+      - documentation
+
+  - id: SPEC-005
+    title: Dependencies are identified
+    description: The Feature Specification should identify dependencies on other features, services, or teams.
+    severity: warning
+    phase: specification
+    gate: SPEC-005
+    validator:
+      type: manual
+      checklist:
+        - Dependencies section exists
+        - Dependencies are listed (or "None" is specified)
+    evidence:
+      - documentation
+
+  - id: SPEC-006
+    title: Risks are identified
+    description: The Feature Specification should identify potential risks.
+    severity: warning
+    phase: specification
+    gate: SPEC-006
+    validator:
+      type: manual
+      checklist:
+        - Risks section exists
+        - Risks are listed (or "None" is specified)
+    evidence:
+      - documentation
+
+  - id: SPEC-007
+    title: Open Questions are listed
+    description: The Feature Specification should list any open questions that need resolution.
+    severity: info
+    phase: specification
+    gate: SPEC-007
+    validator:
+      type: manual
+      checklist:
+        - Open Questions section exists
+        - Questions are listed (or "None" is specified)
+    evidence:
+      - documentation
