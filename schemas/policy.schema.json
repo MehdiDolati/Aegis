@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aegis.dev/schema/policy.schema.json",
+  "title": "Aegis Policy",
+  "type": "object",
+  "required": [
+    "version",
+    "metadata",
+    "rules"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "extends": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "$defs": {
+    "rule": {
+      "type": "object",
+      "required": [
+        "id",
+        "when",
+        "then"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        "when": {
+          "$ref": "#/$defs/expression"
+        },
+        "then": {
+          "$ref": "#/$defs/actionSet"
+        }
+      }
+    },
+    "expression": {
+      "type": "string"
+    },
+    "actionSet": {
+      "type": "object",
+      "properties": {
+        "require": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verify": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reject_if": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warn_if": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
