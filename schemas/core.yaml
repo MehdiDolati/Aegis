@@ -1,0 +1,54 @@
+version: "1.0"
+
+metadata:
+  name: Core Policy
+  description: Base engineering policy
+  extends: null
+
+rules:
+
+  - id: SPEC-001
+
+    description: Every feature must have a Feature Specification.
+
+    severity: error
+
+    when: feature.exists
+
+    then:
+
+      require:
+        - feature_spec
+
+  - id: TEST-001
+
+    severity: error
+
+    when: feature.exists
+
+    then:
+
+      require:
+        - test_plan
+
+  - id: DOC-001
+
+    severity: error
+
+    when: feature.user_visible
+
+    then:
+
+      require:
+        - user_manual
+
+  - id: TRACE-001
+
+    severity: error
+
+    when: feature.exists
+
+    then:
+
+      verify:
+        - traceability
